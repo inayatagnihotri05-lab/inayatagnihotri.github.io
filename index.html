@@ -79,12 +79,28 @@
   <section id="contact">
     <h2>Connect with Me</h2>
     <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+    <p>GitHub: <a href="https://github.com/inayatagnihotri" target="_blank">github.com/inayatagnihotri</a></p>
   </section>
 </main>
 
 <footer>
   &copy; 2025 Inayat Agnihotri. All rights reserved.
 </footer>
+
+<!-- Scroll Reveal JS -->
+<script>
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', () => {
+  const triggerBottom = window.innerHeight / 1.2;
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if(sectionTop < triggerBottom) {
+      section.classList.add('visible');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
