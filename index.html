@@ -10,15 +10,41 @@
 <body>
 
 <header>
-  <h1>Inayat Agnihotri</h1>
-  <p>Transforming curiosity into action. Explore the ideas, achievements, and passions that define my journey of learning, creating, and impacting the world.</p>
+  <h1 id="typed"></h1>
+  <p>Explore my journey of learning, creating, and making a real-world impact.</p>
 </header>
 
 <main>
+  <!-- Stats Section -->
+  <section id="stats">
+    <div class="stat"><span class="counter">50</span>+ Volunteers Engaged</div>
+    <div class="stat"><span class="counter">3</span> Projects Published</div>
+    <div class="stat"><span class="counter">2</span> State-Level Medals</div>
+  </section>
+
   <!-- About Section -->
   <section id="about">
     <h2>Who I Am</h2>
-    <p>Hi! I’m Inayat, a student dedicated to turning bold ideas into meaningful action. My journey spans academics, innovation, leadership, and sports. This portfolio reflects my story of growth, creativity, and impact.</p>
+    <p>Hi! I’m Inayat, a student turning bold ideas into meaningful action. My journey spans academics, innovation, leadership, and sports.</p>
+  </section>
+
+  <!-- Timeline Section -->
+  <section id="timeline">
+    <h2>Achievements & Leadership Timeline</h2>
+    <div class="timeline">
+      <div class="timeline-item left">
+        <h3>Football Team Captain <span class="badge">Captain</span></h3>
+        <p>Led my school football team to regional finals, building teamwork & strategy skills.</p>
+      </div>
+      <div class="timeline-item right">
+        <h3>Track & Field Champion <span class="badge">1st Place</span></h3>
+        <p>Won first place in 100m sprint at state-level competitions, demonstrating dedication.</p>
+      </div>
+      <div class="timeline-item left">
+        <h3>Sustainability Workshop <span class="badge">Workshop</span></h3>
+        <p>Conducted workshops in schools to reduce single-use plastics and promote eco-friendly habits.</p>
+      </div>
+    </div>
   </section>
 
   <!-- Projects Section -->
@@ -26,52 +52,26 @@
     <h2>Innovation Portfolio</h2>
     <div class="project-card">
       <h3>Eco Tracker App <span class="badge">Featured</span></h3>
-      <p>A web app to track and reduce personal carbon footprint, emphasizing sustainability and real-world impact.</p>
+      <p>A web app to track and reduce carbon footprint, emphasizing sustainability and impact.</p>
       <a href="#">View Project</a>
     </div>
     <div class="project-card">
       <h3>Court AI Assistant <span class="badge">AI</span></h3>
-      <p>An AI-powered tool that summarizes and explains legal cases, demonstrating innovation and problem-solving skills.</p>
+      <p>An AI-powered tool that summarizes and explains legal cases, demonstrating innovation.</p>
       <a href="#">View Project</a>
     </div>
   </section>
 
-  <!-- Sports & Leadership Section -->
-  <section id="sports">
-    <h2>Athletics & Leadership</h2>
-    <div class="sports-card">
-      <h3>Football Team Captain <span class="badge">Captain</span></h3>
-      <p>Led my school football team to regional finals, developing leadership, teamwork, and strategy skills.</p>
-    </div>
-    <div class="sports-card">
-      <h3>Track & Field Champion <span class="badge">1st Place</span></h3>
-      <p>Won first place in 100m sprint at state-level competitions, showing dedication and discipline.</p>
-    </div>
-  </section>
-
-  <!-- Creative Pursuits Section -->
+  <!-- Creative Ventures Section -->
   <section id="creativity">
     <h2>Creative Ventures</h2>
     <div class="creative-card">
       <h3>Digital Art Portfolio <span class="badge">Art</span></h3>
-      <p>Created a series of digital illustrations exploring themes of sustainability and urban life.</p>
+      <p>Series of digital illustrations exploring sustainability and urban life.</p>
     </div>
     <div class="creative-card">
       <h3>Mini Game Development <span class="badge">Code</span></h3>
-      <p>Designed and developed a browser-based game to teach eco-friendly habits, combining coding and creativity.</p>
-    </div>
-  </section>
-
-  <!-- Community & Impact Section -->
-  <section id="community">
-    <h2>Impactful Initiatives</h2>
-    <div class="initiative-card">
-      <h3>Local Clean-Up Drive <span class="badge">Community</span></h3>
-      <p>Organized a community clean-up event engaging 50+ volunteers, improving local environment and awareness.</p>
-    </div>
-    <div class="initiative-card">
-      <h3>Sustainability Workshop <span class="badge">Workshop</span></h3>
-      <p>Conducted a workshop on reducing single-use plastics in schools, inspiring students to adopt eco-friendly habits.</p>
+      <p>Browser-based game to teach eco-friendly habits, combining coding and creativity.</p>
     </div>
   </section>
 
@@ -88,18 +88,44 @@
   &copy; 2025 Inayat Agnihotri. All rights reserved.
 </footer>
 
-<!-- Scroll Reveal JS -->
+<!-- JS: Typed Header, Scroll Reveal, Counters -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script>
-const sections = document.querySelectorAll('section');
-window.addEventListener('scroll', () => {
-  const triggerBottom = window.innerHeight / 1.2;
-  sections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-    if(sectionTop < triggerBottom) {
-      section.classList.add('visible');
-    }
+  // Typed text animation
+  var typed = new Typed('#typed', {
+    strings: ["Transforming curiosity → into action → into impact."],
+    typeSpeed: 50,
+    backSpeed: 25,
+    loop: true
   });
-});
+
+  // Scroll Reveal
+  const sections = document.querySelectorAll('section');
+  window.addEventListener('scroll', () => {
+    const triggerBottom = window.innerHeight / 1.2;
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if(sectionTop < triggerBottom) section.classList.add('visible');
+    });
+  });
+
+  // Counter Animation
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.innerText;
+      const count = +counter.getAttribute('data-count') || target;
+      const current = +counter.innerText;
+      const increment = target / 100;
+      if(current < target) {
+        counter.innerText = Math.ceil(current + increment);
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
 </script>
 
 </body>
